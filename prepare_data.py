@@ -7,7 +7,7 @@ df = pd.read_csv("heart_disease_uci.csv")
 df["target"] = (df["num"] > 0).astype(int)
 
 # Drop identifier and site columns
-df = df.drop(columns=["num", "id", "dataset"])
+df = df.drop(columns=["num", "id", "dataset"], errors="ignore")
 
 # Convert boolean-like columns to numeric
 bool_map = {"TRUE": 1, "FALSE": 0, True: 1, False: 0}
