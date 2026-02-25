@@ -23,6 +23,9 @@ df = df.dropna()
 
 # Save cleaned dataset
 df.to_csv("heart.csv", index=False)
+with open("prep_summary.txt", "w") as f:
+    f.write(f"Final shape: {df.shape}\n")
+    f.write(f"Target prevalence: {df['target'].mean():.4f}\n")
 
 print("Saved heart.csv")
 print("Final shape:", df.shape)
