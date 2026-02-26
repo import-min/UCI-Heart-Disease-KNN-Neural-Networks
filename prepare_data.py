@@ -1,4 +1,6 @@
 import pandas as pd
+import logging
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 # Load raw dataset
 df = pd.read_csv("heart_disease_uci.csv")
@@ -27,7 +29,9 @@ with open("prep_summary.txt", "w") as f:
     f.write(f"Final shape: {df.shape}\n")
     f.write(f"Target prevalence: {df['target'].mean():.4f}\n")
 
-print("Saved heart.csv")
-print("Final shape:", df.shape)
-print("Columns:", list(df.columns))
+logging.info("Saved heart.csv")
+logging.info("Final shape: %s", df.shape)
+logging.info("Columns: %s", list(df.columns))
+logging.info("Wrote prep_summary.txt")
+
 
