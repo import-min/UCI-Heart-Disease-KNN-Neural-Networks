@@ -5,6 +5,11 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 # Load raw dataset
 df = pd.read_csv("heart_disease_uci.csv")
 
+required_cols = {"num", "fbs", "exang", "sex", "cp", "restecg", "slope", "thal"}
+missing = required_cols - set(df.columns)
+if missing:
+    raise ValueError(f"Missing required columns in input CSV: {sorted(missing)}")
+
 # Create binary target: num > 0 indicates heart disease
 df["target"] = (df["num"] > 0).astype(int)
 
