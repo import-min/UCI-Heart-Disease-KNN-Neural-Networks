@@ -1,4 +1,4 @@
-# Cardiovascular Risk Prediction on the UCI Heart Disease Dataset Using K-Nearest Neighbors and Neural Networks🫀
+# Cardiovascular Risk Prediction on the UCI Heart Disease Dataset Using K-Nearest Neighbors and Neural Networks
 
 ## Overview
 This project explores cardiovascular disease risk prediction using tabular clinical data from the UCI Heart Disease dataset. The goal is to compare a distance-based model (K-Nearest Neighbors) with simple feedforward neural networks on a binary classification task.
