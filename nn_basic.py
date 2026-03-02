@@ -6,6 +6,7 @@ import torch.optim as optim
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import roc_auc_score, classification_report
 
 # Load dataset
 df = pd.read_csv("heart.csv")
@@ -57,7 +58,12 @@ for epoch in range(200):
 
 # Evaluate
 with torch.no_grad():
-    predictions = (model(X_test) > 0.5).float()
-    accuracy = accuracy_score(y_test, predictions)
+    probs = model(X_test).cpu().numpy().ravel()
+    predictions = (probs > 0.5).astype(int)
+
+    accuracy = accuracy_score(y_test.cpu().numpy(), predictions)
+    auc = roc_auc_score(y_test.cpu().numpy(), probs)
 
 print("Basic Neural Network Accuracy:", accuracy)
+print("Basic Neural Network ROC-AUC:", auc)
+print("\nClassification Report:\n", classification_report(y_test.cpu().numpy(), predictions, digits=3))
