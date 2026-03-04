@@ -48,6 +48,11 @@ model = BasicNN(X_train.shape[1])
 criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
+best_loss = float("inf")
+patience = 20
+patience_counter = 0
+
+# Train
 # Train
 for epoch in range(200):
     optimizer.zero_grad()
@@ -55,6 +60,19 @@ for epoch in range(200):
     loss = criterion(outputs, y_train)
     loss.backward()
     optimizer.step()
+
+    current_loss = loss.item()
+
+    # Early stopping logic
+    if current_loss < best_loss:
+        best_loss = current_loss
+        patience_counter = 0
+    else:
+        patience_counter += 1
+
+    if patience_counter >= patience:
+        print(f"Early stopping triggered at epoch {epoch}")
+        break
 
 # Evaluate
 with torch.no_grad():
