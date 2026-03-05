@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -12,6 +13,8 @@ df = pd.read_csv("heart.csv")
 
 X = df.drop("target", axis=1)
 y = df["target"]
+
+os.makedirs("results", exist_ok=True)
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
@@ -40,7 +43,8 @@ plt.plot(k_values, auc_scores, marker="o")
 plt.xlabel("Number of Neighbors (k)")
 plt.ylabel("AUC")
 plt.title("KNN AUC vs k (UCI Heart Disease)")
-plt.show()
+plt.savefig("results/knn_auc_vs_k.png", dpi=300)
+plt.close()
 
 best_k = k_values[np.argmax(auc_scores)]
 print(f"Best k: {best_k}")
@@ -50,4 +54,9 @@ final_model = KNeighborsClassifier(n_neighbors=best_k)
 final_model.fit(X_train, y_train)
 y_pred = final_model.predict(X_test)
 
-print(classification_report(y_test, y_pred))
+report = classification_report(y_test, y_pred)
+
+print(report)
+
+with open("results/knn_classification_report.txt", "w") as f:
+    f.write(report)
