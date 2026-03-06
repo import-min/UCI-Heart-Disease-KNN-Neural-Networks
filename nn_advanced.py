@@ -2,6 +2,7 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -12,6 +13,8 @@ df = pd.read_csv("heart.csv")
 
 X = df.drop("target", axis=1).values
 y = df["target"].values
+
+
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
@@ -51,12 +54,22 @@ criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Train
+loss_history = []
+
 for epoch in range(300):
     optimizer.zero_grad()
     outputs = model(X_train)
     loss = criterion(outputs, y_train)
     loss.backward()
     optimizer.step()
+    
+    loss_history.append(loss.item())
+
+plt.plot(loss_history)
+plt.xlabel("Epoch")
+plt.ylabel("Training Loss")
+plt.title("Advanced NN Training Loss")
+plt.show()
 
 # Evaluate
 with torch.no_grad():
