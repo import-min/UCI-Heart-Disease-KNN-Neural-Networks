@@ -70,6 +70,8 @@ for epoch in range(300):
     optimizer.step()
     
     loss_history.append(loss.item())
+    if epoch % 50 == 0:
+        print(f"Epoch {epoch} | Loss: {loss.item():.4f}")
 
 plt.plot(loss_history)
 plt.xlabel("Epoch")
