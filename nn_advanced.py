@@ -56,6 +56,7 @@ class AdvancedNN(nn.Module):
         return self.model(x)
 
 model = AdvancedNN(X_train.shape[1])
+print("Number of input features:", X_train.shape[1])
 criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
