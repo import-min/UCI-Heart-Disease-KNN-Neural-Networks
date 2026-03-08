@@ -27,7 +27,9 @@ categorical_cols = ["sex", "cp", "restecg", "slope", "thal"]
 df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
 
 # Drop rows with missing values
+before_rows = len(df)
 df = df.dropna()
+logging.info("Dropped %s rows with missing values", before_rows - len(df))
 
 # Save cleaned dataset
 df.to_csv("heart.csv", index=False)
