@@ -4,6 +4,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 # Load raw dataset
 df = pd.read_csv("heart_disease_uci.csv")
+logging.info("Raw dataset shape: %s", df.shape)
 
 required_cols = {"num", "fbs", "exang", "sex", "cp", "restecg", "slope", "thal"}
 missing = required_cols - set(df.columns)
