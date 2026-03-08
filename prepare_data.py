@@ -25,6 +25,7 @@ df["exang"] = df["exang"].map(bool_map)
 # One-hot encode categorical variables
 categorical_cols = ["sex", "cp", "restecg", "slope", "thal"]
 df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
+logging.info("Number of features after encoding: %s", df.shape[1] - 1)
 
 # Drop rows with missing values
 before_rows = len(df)
