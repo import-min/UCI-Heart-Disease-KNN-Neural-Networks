@@ -47,8 +47,10 @@ plt.title("KNN AUC vs k (UCI Heart Disease)")
 plt.savefig("results/knn_auc_vs_k.png", dpi=300)
 plt.close()
 
-best_k = k_values[np.argmax(auc_scores)]
-print(f"Best k: {best_k}")
+best_idx = np.argmax(auc_scores)
+best_k = k_values[best_idx]
+best_auc = auc_scores[best_idx]
+print(f"Best k: {best_k} | AUC: {best_auc:.4f}")
 
 # Train final model
 final_model = KNeighborsClassifier(n_neighbors=best_k)
