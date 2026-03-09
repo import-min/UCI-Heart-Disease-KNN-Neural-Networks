@@ -27,7 +27,8 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # Tune k using AUC
-k_values = range(1, 21)
+max_k = 20
+k_values = range(1, max_k + 1)
 auc_scores = []
 
 for k in k_values:
