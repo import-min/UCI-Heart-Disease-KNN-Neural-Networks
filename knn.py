@@ -52,6 +52,9 @@ best_k = k_values[best_idx]
 best_auc = auc_scores[best_idx]
 print(f"Best k: {best_k} | AUC: {best_auc:.4f}")
 
+with open("results/best_k.txt", "w") as f:
+    f.write(str(best_k))
+    
 # Train final model
 final_model = KNeighborsClassifier(n_neighbors=best_k)
 final_model.fit(X_train, y_train)
