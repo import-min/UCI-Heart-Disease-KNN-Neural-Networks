@@ -37,6 +37,12 @@ for k in k_values:
     probs = model.predict_proba(X_test)[:, 1]
     fpr, tpr, _ = roc_curve(y_test, probs)
     auc_scores.append(auc(fpr, tpr))
+    
+np.savetxt("results/knn_auc_scores.csv",
+           np.column_stack((list(k_values), auc_scores)),
+           delimiter=",",
+           header="k,auc",
+           comments="")
 
 # Plot AUC vs k
 plt.figure(figsize=(8, 5))
