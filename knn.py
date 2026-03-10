@@ -36,8 +36,10 @@ for k in k_values:
     model.fit(X_train, y_train)
     probs = model.predict_proba(X_test)[:, 1]
     fpr, tpr, _ = roc_curve(y_test, probs)
+    roc_data = np.column_stack((fpr, tpr))
     auc_scores.append(auc(fpr, tpr))
     
+np.savetxt("results/knn_last_roc_curve.csv", roc_data, delimiter=",", header="fpr,tpr", comments="")    
 np.savetxt("results/knn_auc_scores.csv",
            np.column_stack((list(k_values), auc_scores)),
            delimiter=",",
