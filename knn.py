@@ -75,3 +75,8 @@ print(report)
 
 with open("results/knn_classification_report.txt", "w") as f:
     f.write(report)
+
+accuracy = (y_pred == y_test).mean()
+
+with open("results/knn_accuracy.txt", "w") as f:
+    f.write(f"{accuracy:.4f}")
