@@ -65,6 +65,7 @@ with open("results/best_k.txt", "w") as f:
 final_model = KNeighborsClassifier(n_neighbors=best_k)
 final_model.fit(X_train, y_train)
 y_pred = final_model.predict(X_test)
+np.savetxt("results/knn_predictions.csv", y_pred, delimiter=",")
 
 report = classification_report(y_test, y_pred)
 
