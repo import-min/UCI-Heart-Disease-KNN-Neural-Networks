@@ -40,6 +40,7 @@ with open("feature_names.txt", "w") as f:
 with open("prep_summary.txt", "w") as f:
     f.write(f"Final shape: {df.shape}\n")
     f.write(f"Target prevalence: {df['target'].mean():.4f}\n")
+    f.write(f"Feature count: {df.shape[1] - 1}\n")
 
 logging.info("Saved heart.csv")
 logging.info("Final shape: %s", df.shape)
