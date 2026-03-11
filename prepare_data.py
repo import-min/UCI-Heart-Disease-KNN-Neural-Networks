@@ -30,6 +30,7 @@ logging.info("Number of features after encoding: %s", df.shape[1] - 1)
 # Drop rows with missing values
 before_rows = len(df)
 df = df.dropna()
+df = df.sample(frac=1, random_state=42).reset_index(drop=True)
 logging.info("Dropped %s rows with missing values", before_rows - len(df))
 
 # Save cleaned dataset
