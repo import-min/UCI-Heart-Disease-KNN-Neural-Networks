@@ -35,6 +35,8 @@ logging.info("Dropped %s rows with missing values", before_rows - len(df))
 
 # Save cleaned dataset
 df.to_csv("heart.csv", index=False)
+with open("feature_names.txt", "w") as f:
+    f.write("\n".join(df.drop("target", axis=1).columns))
 with open("prep_summary.txt", "w") as f:
     f.write(f"Final shape: {df.shape}\n")
     f.write(f"Target prevalence: {df['target'].mean():.4f}\n")
