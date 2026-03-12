@@ -2,6 +2,12 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import numpy as np
+import random
+
+random.seed(42)
+np.random.seed(42)
+torch.manual_seed(42)
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
