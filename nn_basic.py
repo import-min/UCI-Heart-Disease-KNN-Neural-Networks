@@ -59,7 +59,6 @@ patience = 20
 patience_counter = 0
 
 # Train
-# Train
 for epoch in range(200):
     optimizer.zero_grad()
     outputs = model(X_train)
@@ -81,6 +80,8 @@ for epoch in range(200):
     if patience_counter >= patience:
         print(f"Early stopping triggered at epoch {epoch}")
         break
+
+torch.save(model.state_dict(), "basic_nn_heart_model.pt")
 
 # Evaluate
 with torch.no_grad():
