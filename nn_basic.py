@@ -68,6 +68,8 @@ for epoch in range(200):
     optimizer.step()
 
     current_loss = loss.item()
+    if epoch % 20 == 0:
+        print(f"Epoch {epoch} | Loss: {current_loss:.4f}")
 
     # Early stopping logic
     if current_loss < best_loss:
