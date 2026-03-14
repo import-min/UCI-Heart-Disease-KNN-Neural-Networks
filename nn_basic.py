@@ -94,6 +94,11 @@ with torch.no_grad():
     predictions = (probs > 0.5).astype(int)
 
     accuracy = accuracy_score(y_test.cpu().numpy(), predictions)
+    val_outputs = model(torch.tensor(X_val, dtype=torch.float32))
+    val_preds = (val_outputs.detach().numpy().ravel() > 0.5).astype(int)
+    val_acc = accuracy_score(y_val, val_preds)
+    print("Validation Accuracy:", val_acc)
+
     auc = roc_auc_score(y_test.cpu().numpy(), probs)
 
 print("Basic Neural Network Accuracy:", accuracy)
