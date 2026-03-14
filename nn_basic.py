@@ -92,6 +92,8 @@ torch.save(model.state_dict(), "basic_nn_heart_model.pt")
 with torch.no_grad():
     probs = model(X_test).cpu().numpy().ravel()
     predictions = (probs > 0.5).astype(int)
+    np.savetxt("nn_predictions.csv", predictions, delimiter=",")
+
 
     accuracy = accuracy_score(y_test.cpu().numpy(), predictions)
     val_outputs = model(torch.tensor(X_val, dtype=torch.float32))
