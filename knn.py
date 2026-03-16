@@ -1,8 +1,8 @@
+# Imports
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
@@ -68,6 +68,10 @@ final_model = KNeighborsClassifier(n_neighbors=best_k)
 final_model.fit(X_train, y_train)
 y_pred = final_model.predict(X_test)
 probs = final_model.predict_proba(X_test)[:, 1]
+
+fpr, tpr, _ = roc_curve(y_test, probs)
+roc_best = np.column_stack((fpr, tpr))
+np.savetxt("results/knn_best_roc_curve.csv", roc_best, delimiter=",", header="fpr,tpr", comments="")
 
 np.savetxt("results/knn_predictions.csv", y_pred, delimiter=",")
 np.savetxt("results/knn_probabilities.csv", probs, delimiter=",")
