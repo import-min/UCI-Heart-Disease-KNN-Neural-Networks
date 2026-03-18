@@ -78,7 +78,8 @@ plt.plot(loss_history)
 plt.xlabel("Epoch")
 plt.ylabel("Training Loss")
 plt.title("Advanced NN Training Loss")
-plt.show()
+plt.savefig("advanced_nn_loss_curve.png", dpi=300)
+plt.close()
 
 # Evaluate
 with torch.no_grad():
