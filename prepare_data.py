@@ -50,4 +50,5 @@ logging.info("Final shape: %s", df.shape)
 logging.info("Columns: %s", list(df.columns))
 logging.info("Wrote prep_summary.txt")
 
-
+if __name__ == "__main__":
+    pass  # script already ran above
