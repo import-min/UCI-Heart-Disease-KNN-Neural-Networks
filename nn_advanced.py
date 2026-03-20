@@ -16,6 +16,8 @@ from sklearn.metrics import accuracy_score
 
 # Load dataset
 df = pd.read_csv("heart.csv")
+print("Columns:", df.columns.tolist())
+print("First row preview:\n", df.head(1))
 
 X = df.drop("target", axis=1).values
 y = df["target"].values
