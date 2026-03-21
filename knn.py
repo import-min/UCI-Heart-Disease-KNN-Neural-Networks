@@ -27,12 +27,13 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # Tune k using AUC
-max_k = 20
-k_values = range(1, max_k + 1)
+MAX_K = 20
+k_values = range(1, MAX_K + 1)
 auc_scores = []
 
 for k in k_values:
-    model = KNeighborsClassifier(n_neighbors=k)
+    current_k = k
+    model = KNeighborsClassifier(n_neighbors=current_k)
     model.fit(X_train, y_train)
     probs = model.predict_proba(X_test)[:, 1]
     fpr, tpr, _ = roc_curve(y_test, probs)
