@@ -8,6 +8,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, roc_curve, auc
 
+np.random.seed(42)
+
 # Load dataset (expects a binary 'target' column)
 df = pd.read_csv("heart.csv")
 
