@@ -12,6 +12,7 @@ np.random.seed(42)
 
 # Load dataset (expects a binary 'target' column)
 df = pd.read_csv("heart.csv")
+print("Dataset shape:", df.shape)
 
 X = df.drop("target", axis=1)
 y = df["target"]
