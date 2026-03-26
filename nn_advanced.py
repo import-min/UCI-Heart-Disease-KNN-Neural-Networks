@@ -21,8 +21,6 @@ print("First row preview:\n", df.head(1))
 
 X = df.drop("target", axis=1).values
 y = df["target"].values
-print("Dataset shape:", df.shape)
-
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
