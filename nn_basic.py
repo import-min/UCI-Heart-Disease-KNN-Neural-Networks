@@ -70,6 +70,7 @@ for epoch in range(200):
     loss = criterion(outputs, y_train)
     loss.backward()
     optimizer.step()
+    print(f"[commit] epoch={epoch} loss={loss.item():.4f}")
 
     current_loss = loss.item()
     if epoch % 20 == 0:
