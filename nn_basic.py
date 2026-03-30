@@ -106,4 +106,4 @@ with torch.no_grad():
 
 print("Basic Neural Network Accuracy:", accuracy)
 print("Basic Neural Network ROC-AUC:", auc)
-print("\nClassification Report:\n", classification_report(y_test.cpu().numpy(), predictions, digits=3))
+print("\nFinal Classification Report:\n", classification_report(y_test.cpu().numpy(), predictions, digits=3))
