@@ -10,12 +10,12 @@ logging.info("Dataset shape: %s", df.shape)
 required_cols = {"num", "fbs", "exang", "sex", "cp", "restecg", "slope", "thal"}
 missing = required_cols - set(df.columns)
 if missing:
-    raise ValueError(f"Missing required columns in input CSV: {sorted(missing)}")
+    raise ValueError(f"missing required columns in input CSV: {sorted(missing)}")
 
-# Create binary target: num > 0 indicates heart disease
+# Create binary target of num > 0 which indicates heart disease
 df["target"] = (df["num"] > 0).astype(int)
 
-# Drop identifier and site columns
+# Drop identifier + site columns
 df = df.drop(columns=["num", "id", "dataset"], errors="ignore")
 
 # Convert boolean-like columns to numeric
