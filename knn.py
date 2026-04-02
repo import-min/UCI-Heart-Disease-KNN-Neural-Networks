@@ -10,7 +10,7 @@ from sklearn.metrics import classification_report, roc_curve, auc
 
 np.random.seed(42)
 
-# Load dataset (expects a binary 'target' column)
+# Load dataset (expects binary 'target' column)
 df = pd.read_csv("heart.csv")
 print("Dataset shape:", df.shape)
 
