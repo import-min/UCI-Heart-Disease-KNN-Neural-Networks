@@ -4,6 +4,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 # Load raw dataset
 df = pd.read_csv("heart_disease_uci.csv")
+logging.info("Loaded dataset")
 df.columns = df.columns.str.strip()
 logging.info("Dataset shape: %s", df.shape)
 
