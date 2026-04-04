@@ -90,7 +90,7 @@ torch.save(model.state_dict(), "basic_nn_heart_model.pt")
 
 # Evaluate
 with torch.no_grad():
-    probs = model(X_test).cpu().numpy().ravel()
+    probs = torch.sigmoid(model(X_test)).cpu().numpy().ravel()
     predictions = (probs > 0.5).astype(int)
     np.savetxt("nn_predictions.csv", predictions, delimiter=",")
 
