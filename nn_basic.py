@@ -48,15 +48,14 @@ class BasicNN(nn.Module):
         self.model = nn.Sequential(
             nn.Linear(input_dim, 16),
             nn.ReLU(),
-            nn.Linear(16, 1),
-            nn.Sigmoid()
+            nn.Linear(16, 1)
         )
 
     def forward(self, x):
         return self.model(x)
 
 model = BasicNN(X_train.shape[1])
-criterion = nn.BCELoss()
+criterion = nn.BCEWithLogitsLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 best_loss = float("inf")
