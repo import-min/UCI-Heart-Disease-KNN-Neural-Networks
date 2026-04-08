@@ -2,7 +2,7 @@ import pandas as pd
 import logging
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
-# Load raw dataset
+# Load dataset
 df = pd.read_csv("heart_disease_uci.csv")
 logging.info("Loaded dataset")
 df.columns = df.columns.str.strip()
