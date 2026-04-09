@@ -102,6 +102,6 @@ with torch.no_grad():
 
     auc = roc_auc_score(y_test.cpu().numpy(), probs)
 
-print("Basic Neural Network Accuracy:", accuracy)
-print("Basic Neural Network ROC-AUC:", auc)
+print("Basic NN Accuracy:", accuracy)
+print("Basic NN ROC-AUC:", auc)
 print("\nFinal Classification Report:\n", classification_report(y_test.cpu().numpy(), predictions, digits=3))
